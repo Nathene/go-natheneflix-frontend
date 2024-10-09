@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Alert from "./components/Alert";
 
 function App() {
@@ -9,6 +9,15 @@ function App() {
   const [alertClassName, setAlertClassName] = useState("d-none");
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+
+  useEffect(() => {
+    return () => { 
+      setAlertClassName("d-none");
+      setAlertMessage("");
+    };
+  }, [location]);
 
   const logout = () => {
     setJwtToken("");
