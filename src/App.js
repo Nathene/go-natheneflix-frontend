@@ -1,34 +1,44 @@
-import { useState, useEffect } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Alert from "./components/Alert";
 
 function App() {
   const [jwtToken, setJwtToken] = useState("");
-
   const [alertMessage, setAlertMessage] = useState("");
   const [alertClassName, setAlertClassName] = useState("d-none");
 
   const navigate = useNavigate();
-  const location = useLocation();
 
-
-  useEffect(() => {
-    return () => { 
-      setAlertClassName("d-none");
-      setAlertMessage("");
-    };
-  }, [location]);
-
-  const logout = () => {
+  const logOut = () => {
     setJwtToken("");
     navigate("/login");
   }
+
+  useEffect(() => {
+    if (jwtToken === "") {
+      const requestOptions = {
+        method: "GET",
+        credentials: "include",
+      }
+
+      fetch(`/refresh`, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.access_token) {
+            setJwtToken(data.access_token);
+          }
+        })
+        .catch(error => {
+          console.log("user is not logged in", error);
+        })
+    }
+  }, [jwtToken])
 
   return (
     <div className="container">
       <div className="row">
         <div className="col">
-          <h1 className="mt-3"> Welcome to Natheneflix </h1>
+          <h1 className="mt-3">Go Watch a Movie!</h1>
         </div>
         <div className="col text-end">
           {jwtToken === "" ? (
@@ -36,7 +46,7 @@ function App() {
               <span className="badge bg-success">Login</span>
             </Link>
           ) : (
-            <a href="#!" onClick={logout}>
+            <a href="#!" onClick={logOut}>
               <span className="badge bg-danger">Logout</span>
             </a>
           )}
@@ -72,7 +82,7 @@ function App() {
                     Add Movie
                   </Link>
                   <Link
-                    to="/admin"
+                    to="/manage-catalogue"
                     className="list-group-item list-group-item-action"
                   >
                     Manage Catalogue
@@ -81,7 +91,7 @@ function App() {
                     to="/graphql"
                     className="list-group-item list-group-item-action"
                   >
-                    Graphql
+                    GraphQL
                   </Link>
                 </>
               )}

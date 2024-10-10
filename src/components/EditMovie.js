@@ -1,7 +1,9 @@
+
 const EditMovie = () => {
-    return (
+
+    return(
         <div>
-            <h2>EditMovie</h2>
+            <h2>Edit Movie</h2>
             <hr />
         </div>
     )

@@ -1,5 +1,7 @@
+
 const ManageCatalogue = () => {
-    return (
+
+    return(
         <div>
             <h2>Manage Catalogue</h2>
             <hr />

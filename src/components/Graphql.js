@@ -1,10 +1,12 @@
-const Graphql = () => {
-    return (
+
+const GraphQL = () => {
+
+    return(
         <div>
-            <h2>Graphql</h2>
+            <h2>GraphQL</h2>
             <hr />
         </div>
     )
 }
 
-export default Graphql;
+export default GraphQL;
