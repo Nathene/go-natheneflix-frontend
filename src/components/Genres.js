@@ -13,7 +13,7 @@ const Genres = () => {
       headers: headers,
     };
 
-    fetch(`/genres`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/genres`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -25,7 +25,7 @@ const Genres = () => {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   if (error !== null) {
     return <div>Error: {error.message}</div>;
@@ -40,7 +40,7 @@ const Genres = () => {
             <Link
               key={g.id}
               className="list-group-item list-group-item-action"
-              to={`/genres/${g.id}`}
+              to={`/natheneflix/genres/${g.id}`}
               state={{
                 genreName: g.genre,
               }}

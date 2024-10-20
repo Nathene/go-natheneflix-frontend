@@ -45,7 +45,7 @@ const EditMovie = () => {
 
   useEffect(() => {
     if (jwtToken === "") {
-      navigate("/login");
+      navigate("/natheneflix/login");
       return;
     }
 
@@ -70,7 +70,7 @@ const EditMovie = () => {
         headers: headers,
       };
 
-      fetch(`/genres`, requestOptions)
+      fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/genres`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           const checks = [];
@@ -99,7 +99,7 @@ const EditMovie = () => {
         headers: headers,
       };
 
-      fetch(`/admin/movies/${id}`, requestOptions)
+      fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/admin/movies/${id}`, requestOptions)
         .then((response) => {
           if (response.status !== 200) {
             setError("Invalid response code: " + response.status);
@@ -194,13 +194,13 @@ const EditMovie = () => {
       credentials: "include",
     };
 
-    fetch(`/admin/movies/${movie.id}`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/admin/movies/${movie.id}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
           console.log(data.error);
         } else {
-          navigate("/manage-catalogue");
+          navigate("/natheneflix/manage-catalogue");
         }
       })
       .catch((err) => {
@@ -258,13 +258,13 @@ const EditMovie = () => {
           headers: headers,
         }
 
-        fetch(`/admin/movies/${id}`, requestOptions)
+        fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/admin/movies/${id}`, requestOptions)
           .then((response) => response.json())
           .then((data) => {
             if (data.error) {
               console.log(data.error)
             } else {
-              navigate("/manage-catalogue")
+              navigate("/natheneflix/manage-catalogue")
             }
           })
           .catch(err => {console.log(err)})

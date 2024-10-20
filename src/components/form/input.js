@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 
 const Input = forwardRef((props, ref) => {
+    const errorMsg = props.errorMsg instanceof Error ? props.errorMsg.message : props.errorMsg;
     return (
         <div className="mb-3">
             <label htmlFor={props.name} className="form-label">
@@ -17,7 +18,7 @@ const Input = forwardRef((props, ref) => {
                 autoComplete={props.autoComplete}
                 value={props.value}
             />
-            <div className={props.errorDiv}>{props.errorMsg}</div>
+            <div className={props.errorDiv}>{errorMsg}</div>
         </div>
     )
 })
