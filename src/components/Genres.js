@@ -13,7 +13,7 @@ const Genres = () => {
       headers: headers,
     };
 
-    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/genres`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/genres`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -40,7 +40,7 @@ const Genres = () => {
             <Link
               key={g.id}
               className="list-group-item list-group-item-action"
-              to={`/natheneflix/genres/${g.id}`}
+              to={`/genres/${g.id}`}
               state={{
                 genreName: g.genre,
               }}

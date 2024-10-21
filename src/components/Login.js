@@ -31,7 +31,7 @@ const Login = () => {
             body: JSON.stringify(payload),
         }
 
-        fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/authenticate`, requestOptions)
+        fetch(`${process.env.REACT_APP_BACKEND}/authenticate`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
@@ -42,7 +42,7 @@ const Login = () => {
                     setAlertClassName("d-none");
                     setAlertMessage("");
                     toggleRefresh(true);
-                    navigate("/natheneflix/");
+                    navigate("/");
                 }
             })
             .catch(error => {

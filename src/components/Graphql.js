@@ -30,7 +30,7 @@ const GraphQL = () => {
         body: payload,
       };
 
-    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/graphql`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/graphql`, requestOptions)
     .then((response) => response.json())
     .then((response) => {
     if (response.error) {
@@ -80,7 +80,7 @@ const GraphQL = () => {
       body: payload,
     };
 
-    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/graphql`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/graphql`, requestOptions)
       .then((response) => response.json())
       .then((response) => {
         if (response.error) {

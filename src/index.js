@@ -15,45 +15,45 @@ import OneGenre from './components/OneGenre';
 
 const router = createBrowserRouter([
   {
-    path: "/natheneflix",
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {index: true, element: <Home /> },
       {
-        path: "/natheneflix/movies",
+        path: "/movies",
         element: <Movies />,
       },
       {
-        path: "/natheneflix/movies/:id",
+        path: "/movies/:id",
         element: <Movie />,
       },
       {
-        path: "/natheneflix/genres",
+        path: "/genres",
         element: <Genres />,
       },
       {
-        path: "/natheneflix/genres/:id",
+        path: "/genres/:id",
         element: <OneGenre />,
       },
       {
-        path: "/natheneflix/admin/movie/0",
+        path: "/admin/movie/0",
         element: <EditMovie />,
       },
       {
-        path: "/natheneflix/admin/movies/:id",
+        path: "/admin/movies/:id",
         element: <EditMovie />,
       },
       {
-        path: "/natheneflix/manage-catalogue",
+        path: "/manage-catalogue",
         element: <ManageCatalogue />,
       },
       {
-        path: "/natheneflix/graphql",
+        path: "/graphql",
         element: <GraphQL />,
       },
       {
-        path: "/natheneflix/login",
+        path: "/login",
         element: <Login />,
       },
     ]
@@ -63,6 +63,6 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   //<React.StrictMode>
-    <RouterProvider router={router} basename="/natheneflix" />
+    <RouterProvider router={router} basename="/" />
   //</React.StrictMode>
 );

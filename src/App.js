@@ -17,7 +17,7 @@ function App() {
       credentials: "include",
     }
 
-    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/logout`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/logout`, requestOptions)
     .catch(error => {
       console.log(error);
     })
@@ -25,7 +25,7 @@ function App() {
       setJwtToken("");
       toggleRefresh(false)
     })
-    navigate("/natheneflix/login");
+    navigate("/login");
   }
 
   const toggleRefresh = useCallback((status) => {
@@ -35,7 +35,7 @@ function App() {
           method: "GET",
           credentials: "include",
         }
-        fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/refresh`, requestOptions)
+        fetch(`${process.env.REACT_APP_BACKEND}/refresh`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (data.access_token) {
@@ -64,7 +64,7 @@ function App() {
         credentials: "include",
       }
 
-      fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/refresh`, requestOptions)
+      fetch(`${process.env.REACT_APP_BACKEND}/refresh`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
           if (data.access_token) {
@@ -89,11 +89,11 @@ function App() {
         </div>
         <div className="col text-end">
           {jwtToken === "" ? (
-            <Link to="/natheneflix/login">
+            <Link to="/login">
               <span className="badge bg-success">Login</span>
             </Link>
           ) : (
-            <a href="/natheneflix/#!" onClick={logOut}>
+            <a href="/#!" onClick={logOut}>
               <span className="badge bg-danger">Logout</span>
             </a>
           )}
@@ -105,17 +105,17 @@ function App() {
         <div className="col-md-2">
           <nav>
             <div className="list-group">
-              <Link to="/natheneflix/" className="list-group-item list-group-item-action">
+              <Link to="/" className="list-group-item list-group-item-action">
                 Home
               </Link>
               <Link
-                to="/natheneflix/movies"
+                to="/movies"
                 className="list-group-item list-group-item-action"
               >
                 Movies
               </Link>
               <Link
-                to="/natheneflix/genres"
+                to="/genres"
                 className="list-group-item list-group-item-action"
               >
                 Genres
@@ -123,19 +123,19 @@ function App() {
               {jwtToken !== "" && (
                 <>
                   <Link
-                    to="/natheneflix/admin/movie/0"
+                    to="/admin/movie/0"
                     className="list-group-item list-group-item-action"
                   >
                     Add Movie
                   </Link>
                   <Link
-                    to="/natheneflix/manage-catalogue"
+                    to="/manage-catalogue"
                     className="list-group-item list-group-item-action"
                   >
                     Manage Catalogue
                   </Link>
                   <Link
-                    to="/natheneflix/graphql"
+                    to="/graphql"
                     className="list-group-item list-group-item-action"
                   >
                     GraphQL
