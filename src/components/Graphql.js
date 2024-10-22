@@ -30,7 +30,7 @@ const GraphQL = () => {
         body: payload,
       };
 
-    fetch(`${process.env.REACT_APP_BACKEND}/graphql`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/graphql`, requestOptions)
     .then((response) => response.json())
     .then((response) => {
     if (response.error) {
@@ -80,7 +80,7 @@ const GraphQL = () => {
       body: payload,
     };
 
-    fetch(`${process.env.REACT_APP_BACKEND}/graphql`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/graphql`, requestOptions)
       .then((response) => response.json())
       .then((response) => {
         if (response.error) {
@@ -124,7 +124,7 @@ const GraphQL = () => {
             {movies.map((m) => (
               <tr key={m.id}>
                 <td>
-                  <Link to={`/movies/${m.id}`}>{m.title}</Link>
+                  <Link to={`/natheneflix/movies/${m.id}`}>{m.title}</Link>
                 </td>
                 <td>
                     {new Date(m.release_date).toLocaleDateString()}

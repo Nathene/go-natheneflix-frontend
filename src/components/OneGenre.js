@@ -18,7 +18,7 @@ const OneGenre = () => {
             headers: headers,
         }
 
-        fetch(`${process.env.REACT_APP_BACKEND}/movies/genres/${id}`, requestOptions)
+        fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/movies/genres/${id}`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
@@ -49,7 +49,7 @@ const OneGenre = () => {
                     {movies.map((m) => (
                         <tr key={m.id}>
                             <td>
-                                <Link to={`/movies/${m.id}`}>
+                                <Link to={`/natheneflix/movies/${m.id}`}>
                                     {m.title}
                                 </Link>
                             </td>

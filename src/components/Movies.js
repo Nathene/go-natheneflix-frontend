@@ -13,7 +13,7 @@ const Movies = () => {
             headers: headers,
         }
 
-        fetch(`${process.env.REACT_APP_BACKEND}/movies`, requestOptions)
+        fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/movies`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 setMovies(data);
@@ -40,7 +40,7 @@ const Movies = () => {
                     {movies.map((m) => (
                         <tr key={m.id}>
                             <td>
-                                <Link to={`/movies/${m.id}`}>
+                                <Link to={`/natheneflix/movies/${m.id}`}>
                                     {m.title}
                                 </Link>
                             </td>

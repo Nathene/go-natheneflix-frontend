@@ -9,7 +9,7 @@ const ManageCatalogue = () => {
 
     useEffect( () => {
         if (jwtToken === "") {
-            navigate("/login");
+            navigate("/natheneflix/login");
             return
         }
         const headers = new Headers();
@@ -21,7 +21,7 @@ const ManageCatalogue = () => {
             headers: headers,
         } 
 
-        fetch(`${process.env.REACT_APP_BACKEND}/admin/movies`, requestOptions)
+        fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/admin/movies`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 setMovies(data);
@@ -48,7 +48,7 @@ const ManageCatalogue = () => {
                     {movies.map((m) => (
                         <tr key={m.id}>
                             <td>
-                                <Link to={`/admin/movies/${m.id}`}>
+                                <Link to={`/natheneflix/admin/movies/${m.id}`}>
                                     {m.title}
                                 </Link>
                             </td>

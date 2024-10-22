@@ -14,7 +14,7 @@ const Movie = () => {
       headers: headers,
     };
 
-    fetch(`${process.env.REACT_APP_BACKEND}/movies/${id}`, requestOptions)
+    fetch(`${process.env.REACT_APP_BACKEND}/natheneflix/movies/${id}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setMovie(data);
